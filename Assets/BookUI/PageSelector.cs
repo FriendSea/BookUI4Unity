@@ -7,6 +7,10 @@ namespace UnityEngine.UI.Extensions
     {
         void Start()
         {
+            var layout = GetComponentInChildren<ILayoutElement>() as Component;
+            if (layout != null)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(layout.transform as RectTransform);
+
             var book = GetComponent<BookUI>();
             foreach (var target in GetComponentsInChildren<Selectable>())
             {
